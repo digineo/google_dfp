@@ -9,7 +9,8 @@ module GoogleDFP
       
       width, height = ad['size'].split("x")
       
-      tag :div,
+      content_tag :div,
+        "",
         :id    => "dfp-#{name}",
         :class => 'google-dfp',
         :style => "width: #{width}px; height: #{height}px",
