@@ -11,7 +11,11 @@
   googletag.cmd = [];
   
   // Load script
-  $.getScript( document.location.protocol + '//www.googletagservices.com/tag/js/gpt.js');
+  $.ajax({
+    dataType: "script",
+    cache: true,
+    url: '//www.googletagservices.com/tag/js/gpt.js'
+  });
   
   // async commands
   googletag.cmd.push(function() {
