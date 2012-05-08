@@ -1,6 +1,6 @@
 (function(){
   
-  var tags = $("div.google-dfp");
+  var tags = $("div.google-dfp:visible");
   
   if(tags.length == 0)
     return; // nothing to do
