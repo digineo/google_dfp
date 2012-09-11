@@ -1,4 +1,4 @@
-(function(){
+$(function(){
   
   var tags = $("div.google-dfp:visible");
   
@@ -36,4 +36,4 @@
     })
   });
   
-})();
+})
