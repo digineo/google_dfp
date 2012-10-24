@@ -34,6 +34,10 @@ $(function(){
     tags.each(function(){
       googletag.display(this.id);
     })
+
+    if(typeof googletag.callback === "function") {
+      googletag.callback();
+    }
   });
   
 })
