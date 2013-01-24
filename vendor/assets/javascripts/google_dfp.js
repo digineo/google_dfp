@@ -1,4 +1,4 @@
-(function(){
+$(function(){
   
   var tags = $("div.google-dfp:visible");
   
@@ -19,11 +19,18 @@
   
   // async commands
   googletag.cmd.push(function() {
-    
+
     // define slots
     tags.each(function(){
       var $this = $(this);
-      googletag.defineSlot( $this.data('unit'), [$this.width(), $this.height()], this.id).addService(googletag.pubads());
+      googleAdSlot = googletag.defineSlot( $this.data('unit'), [$this.width(), $this.height()], this.id).addService(googletag.pubads());
+      if(typeof googletag.renderEndedCallback === "function") {
+        googleAdSlot.oldRenderEnded = googleAdSlot.renderEnded;
+        googleAdSlot.renderEnded = function() {
+          googleAdSlot.oldRenderEnded();
+          googletag.renderEndedCallback();
+	}
+      }
     })
     
     // enable services
@@ -34,6 +41,10 @@
     tags.each(function(){
       googletag.display(this.id);
     })
+
+    if(typeof googletag.callback === "function") {
+      googletag.callback();
+    }
   });
   
-})();
+})
