@@ -24,6 +24,12 @@ $(function(){
     tags.each(function(){
       var $this = $(this);
       var googleAdSlot = googletag.defineSlot( $this.data('unit'), [$this.width(), $this.height()], this.id).addService(googletag.pubads());
+      
+      var targeting = $this.data('targeting');
+      $.each(targeting, function(k, v) {
+        googleAdSlot.setTargeting(k, v);
+      });
+      
       if(typeof googletag.renderEndedCallback === "function") {
         googleAdSlot.oldRenderEnded = googleAdSlot.renderEnded;
         googleAdSlot.renderEnded = function() {

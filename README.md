@@ -34,6 +34,9 @@ Just call the `dfp_tag` helper in any view to include insert a DFP tag.
 
 	<%= dfp_tag :leaderboard %>
 
+You can optionally specify a targeting hash:
+
+	<%= dfp_tag :leaderboard, { :country => 'US', :customer_job => 'teacher' } %>
 
 Copyright
 ---------

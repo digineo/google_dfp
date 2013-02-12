@@ -1,10 +1,12 @@
+require 'json'
+
 module GoogleDFP
   
   class Engine < ::Rails::Engine
   end
   
   module ViewHelper
-    def dfp_tag(name)
+    def dfp_tag(name, targeting={})
       ad = GoogleDFP::Tags.get(name)
       
       width, height = ad['size'].split("x")
@@ -14,7 +16,8 @@ module GoogleDFP
         :id    => "dfp-#{name}",
         :class => 'google-dfp',
         :style => "width: #{width}px; height: #{height}px",
-        'data-unit' => ad['unit']
+        'data-unit' => ad['unit'],
+        'data-targeting' => targeting.to_json
     end
   end
   
