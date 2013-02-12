@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ["lib"]
   
+  s.add_dependency("json")
   s.add_runtime_dependency "rails"
 
 end
