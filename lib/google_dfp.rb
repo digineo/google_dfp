@@ -6,7 +6,7 @@ module GoogleDFP
   end
   
   module ViewHelper
-    def dfp_tag(name, targeting={})
+    def dfp_tag(name, targeting={}, options={})
       ad = GoogleDFP::Tags.get(name)
       
       width, height = ad['size'].split("x")
@@ -18,6 +18,18 @@ module GoogleDFP
         :style => "width: #{width}px; height: #{height}px",
         'data-unit' => ad['unit'],
         'data-targeting' => targeting.to_json
+    rescue ArgumentError => e
+      if options[:fallback].present?
+        # reset the name param to the fallback
+        name = options[:fallback]
+
+        # remove the fallback so we only retry once
+        options[:fallback] = nil
+        retry
+      else
+        # otherwise re-raise the exception
+        raise e
+      end
     end
   end
   
