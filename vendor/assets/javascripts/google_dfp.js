@@ -27,9 +27,11 @@ $(function(){
       var googleAdSlot = googletag.defineSlot( $this.data('unit'), size, this.id).addService(googletag.pubads());
       
       var targeting = $this.data('targeting');
-      $.each(targeting, function(k, v) {
-        googleAdSlot.setTargeting(k, v);
-      });
+      if(targeting){
+        $.each(targeting, function(k, v) {
+          googleAdSlot.setTargeting(k, v);
+        });
+      }
       
       if(typeof googletag.renderEndedCallback === "function") {
         googleAdSlot.oldRenderEnded = googleAdSlot.renderEnded;
