@@ -23,7 +23,8 @@ $(function(){
     // define slots
     tags.each(function(){
       var $this = $(this);
-      var googleAdSlot = googletag.defineSlot( $this.data('unit'), [$this.width(), $this.height()], this.id).addService(googletag.pubads());
+      var size  = $this.data('size').split(" ").map(function(v){ return parseInt(v) })
+      var googleAdSlot = googletag.defineSlot( $this.data('unit'), size, this.id).addService(googletag.pubads());
       
       var targeting = $this.data('targeting');
       $.each(targeting, function(k, v) {

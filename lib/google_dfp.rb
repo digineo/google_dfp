@@ -9,13 +9,28 @@ module GoogleDFP
     def dfp_tag(name, targeting={})
       ad = GoogleDFP::Tags.get(name)
       
-      width, height = ad['size'].split("x")
+      # generate value for style attribute
+      size     = []
+      raw_size = ad['size'].split("x")
+      style    = %w( width height ).inject "" do |css, attr|
+        val = raw_size.shift
+        css << ";" if css.size > 0
+        if val[-1]=='+'
+          val = val[0..-2]
+          css << "min-#{attr}:#{val}px"
+        else
+          css << "#{attr}:#{val}px"
+        end
+        size << val
+        css
+      end
       
       content_tag :div,
         "",
         :id    => "dfp-#{name}",
         :class => 'google-dfp',
-        :style => "width: #{width}px; height: #{height}px",
+        :style => style,
+        'data-size' => size.join(" "),
         'data-unit' => ad['unit'],
         'data-targeting' => targeting.to_json
     end

@@ -13,12 +13,15 @@ Gemfile:
 
 Create a `/config/google_dfp.yml` in your rails project containing all configured ads:
 
-	leaderboard:
-	  size: 728x90
-	  unit: /123456/leaderboard
+	# ad with fixed size
 	skyscraper:
 	  size: 120x600
 	  unit: /123456/bigsize
+	
+	# ad with fixed width and variable height
+	leaderboard:
+	  size: 728x90+
+	  unit: /123456/leaderboard
 
 Add the supplied javascript to your asset pipeline (e. g. `/app/assets/javascripts/application.js`)
 
