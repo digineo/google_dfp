@@ -11,14 +11,14 @@ Gemfile:
 
     gem 'google_dfp', :git => 'git://github.com/digineo/google_dfp.git'
 
-Create a `/config/google_dfp.yml` in your rails project containing all configured ads:
+Create a `/config/google_dfp.yml` in your rails project containing all configured creatives:
 
-	# ad with fixed size
+	# creative with fixed size
 	skyscraper:
 	  size: 120x600
 	  unit: /123456/bigsize
 	
-	# ad with fixed width and variable height
+	# creative with fixed width and variable height
 	leaderboard:
 	  size: 728x90+
 	  unit: /123456/leaderboard

@@ -7,11 +7,11 @@ module GoogleDFP
   
   module ViewHelper
     def dfp_tag(name, targeting={})
-      ad = GoogleDFP::Tags.get(name)
+      tag = GoogleDFP::Tags.get(name)
       
       # generate value for style attribute
       size     = []
-      raw_size = ad['size'].split("x")
+      raw_size = tag['size'].split("x")
       style    = %w( width height ).inject "" do |css, attr|
         val = raw_size.shift
         css << ";" if css.size > 0
@@ -31,7 +31,7 @@ module GoogleDFP
         :class => 'google-dfp',
         :style => style,
         'data-size' => size.join(" "),
-        'data-unit' => ad['unit'],
+        'data-unit' => tag['unit'],
         'data-targeting' => targeting.to_json
     end
   end
