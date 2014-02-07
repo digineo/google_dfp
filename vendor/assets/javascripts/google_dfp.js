@@ -44,6 +44,7 @@ $(function(){
     
     // enable services
     googletag.pubads().enableSingleRequest();
+    googletag.pubads().enableAsyncRendering();
     googletag.enableServices();
     
     // display ads
