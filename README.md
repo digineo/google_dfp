@@ -18,10 +18,10 @@ Create a `/config/google_dfp.yml` in your rails project containing all configure
 	  size: 120x600
 	  unit: /123456/bigsize
 	
-	# creative with fixed width and variable height
-	leaderboard:
-	  size: 728x90+
-	  unit: /123456/leaderboard
+	# two possible creatives
+	bigsize_billboard:
+	  size: 728x90 900x250
+	  unit: /123456/billboard
 
 Add the supplied javascript to your asset pipeline (e. g. `/app/assets/javascripts/application.js`)
 
@@ -44,4 +44,4 @@ You can optionally specify a targeting hash:
 Copyright
 ---------
 
-Copyright © 2012 [Digineo GmbH](http://www.digineo.de/), released under the MIT license.
+Copyright © 2012-2014 [Digineo GmbH](http://www.digineo.de/), released under the MIT license.
