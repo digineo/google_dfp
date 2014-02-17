@@ -20,12 +20,25 @@ $(function(){
   // async commands
   googletag.cmd.push(function() {
 
-    // define slots
     tags.each(function(){
       var $this = $(this);
-      var size  = $this.data('size').split(" ").map(function(v){ return v.split("x").map(function(w){ return parseInt(w) }) });
-      var googleAdSlot = googletag.defineSlot( $this.data('unit'), size, this.id).addService(googletag.pubads());
+      var unit  = $this.data('unit');
+      var size  = $this.data('size');
+      var googleAdSlot = null;
       
+      // define Slot
+      if(size){
+        size = size.split(" ").map(function(v){ return v.split("x").map(function(w){ return parseInt(w) }) });
+        googleAdSlot = googletag.defineSlot(unit, size, this.id);
+      }
+      else{
+        googleAdSlot = googletag.defineOutOfPageSlot(unit, this.id);
+      }
+
+      // add Service
+      googleAdSlot.addService(googletag.pubads());
+      
+      // set Targeting
       var targeting = $this.data('targeting');
       if(targeting){
         $.each(targeting, function(k, v) {

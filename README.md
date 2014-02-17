@@ -23,6 +23,10 @@ Create a `/config/google_dfp.yml` in your rails project containing all configure
 	  size: 728x90 900x250
 	  unit: /123456/billboard
 
+	# out of page slot (no size)
+	oop:
+	  unit: /123456/oop
+
 Add the supplied javascript to your asset pipeline (e. g. `/app/assets/javascripts/application.js`)
 
 	//= require google_dfp

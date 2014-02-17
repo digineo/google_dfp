@@ -36,10 +36,14 @@ module GoogleDFP
     end
 
     def size
+      return unless @sizes
+      
       @size ||= @sizes.map{|size| [size.width, size.height].join("x") }.join(" ")
     end
 
     def style
+      return unless @sizes
+
       @style ||= begin
         %w( width height ).inject "" do |style, attr|
           style << ";"    if style.length > 0

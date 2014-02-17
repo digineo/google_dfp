@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "google_dfp"
-  s.version = '0.2.0'
+  s.version = '0.3.0'
   s.authors = ["Julian Kornberger"]
   s.email = ["jk+gemspec@digineo.de"]
   s.homepage = "https://github/digineo/google_dfp"
