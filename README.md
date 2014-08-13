@@ -11,14 +11,21 @@ Gemfile:
 
     gem 'google_dfp', :git => 'git://github.com/digineo/google_dfp.git'
 
-Create a `/config/google_dfp.yml` in your rails project containing all configured ads:
+Create a `/config/google_dfp.yml` in your rails project containing all configured creatives:
 
-	leaderboard:
-	  size: 728x90
-	  unit: /123456/leaderboard
+	# creative with fixed size
 	skyscraper:
 	  size: 120x600
 	  unit: /123456/bigsize
+	
+	# two possible creatives
+	bigsize_billboard:
+	  size: 728x90 900x250
+	  unit: /123456/billboard
+
+	# out of page slot (no size)
+	oop:
+	  unit: /123456/oop
 
 Add the supplied javascript to your asset pipeline (e. g. `/app/assets/javascripts/application.js`)
 
@@ -45,4 +52,4 @@ You are also able to supply a fallback name, which will be used if `name` cannot
 Copyright
 ---------
 
-Copyright © 2012 [Digineo GmbH](http://www.digineo.de/), released under the MIT license.
+Copyright © 2012-2014 [Digineo GmbH](http://www.digineo.de/), released under the MIT license.
