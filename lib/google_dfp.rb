@@ -28,7 +28,7 @@ module GoogleDFP
         options[:fallback] = nil
         retry
       else
-        # otherwise re-raise the exception
+        # re-raise the exception
         raise e
       end
     end
