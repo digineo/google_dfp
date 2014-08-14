@@ -9,14 +9,14 @@ module GoogleDFP
   
   module ViewHelper
     def dfp_tag(name, targeting={}, options={})
-      ad = GoogleDFP::Tag.get(name)
+      tag  = GoogleDFP::Tag.get(name)
       data = tag.data
       data = data.merge(targeting: targeting) if targeting.present?
-      
+
       content_tag :div,
         "",
-        :id    => "dfp-#{name}",
-        :class => 'google-dfp',
+        id:    "dfp-#{name}",
+        class: 'google-dfp',
         style: tag.style,
         data:  data
     rescue ArgumentError => e
