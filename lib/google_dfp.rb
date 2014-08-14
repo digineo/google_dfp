@@ -9,7 +9,7 @@ module GoogleDFP
   
   module ViewHelper
     def dfp_tag(name, targeting={}, options={})
-      ad = GoogleDFP::Tags.get(name)
+      ad = GoogleDFP::Tag.get(name)
       data = tag.data
       data = data.merge(targeting: targeting) if targeting.present?
       
