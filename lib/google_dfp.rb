@@ -9,7 +9,7 @@ module GoogleDFP
   
   module ViewHelper
     def dfp_tag(name, targeting={}, options={})
-      tag  = GoogleDFP::Tag.get(name)
+      tag = GoogleDFP::Tag.get(name)
       data = tag.data
       data = data.merge(targeting: targeting) if targeting.present?
 
@@ -28,7 +28,7 @@ module GoogleDFP
         options[:fallback] = nil
         retry
       else
-        # otherwise re-raise the exception
+        # re-raise the exception
         raise e
       end
     end
