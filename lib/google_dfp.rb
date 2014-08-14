@@ -3,12 +3,12 @@ require 'google_dfp/size'
 require 'google_dfp/tag'
 
 module GoogleDFP
-  
+
   class Engine < ::Rails::Engine
   end
-  
+
   module ViewHelper
-    def dfp_tag(name, targeting=nil)
+    def dfp_tag(name, targeting={}, options={})
       tag  = GoogleDFP::Tag.get(name)
       data = tag.data
       data = data.merge(targeting: targeting) if targeting.present?
@@ -19,6 +19,18 @@ module GoogleDFP
         class: 'google-dfp',
         style: tag.style,
         data:  data
+    rescue ArgumentError => e
+      if options[:fallback].present?
+        # reset the name param to the fallback
+        name = options[:fallback]
+
+        # remove the fallback so we only retry once
+        options[:fallback] = nil
+        retry
+      else
+        # re-raise the exception
+        raise e
+      end
     end
   end
 
