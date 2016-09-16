@@ -1,21 +1,28 @@
 /* global $ */
 $(function(){
+  function loadGooglePublisherTag() {
+    // initialize googletag-variable
+    window.googletag = window.googletag || {};
+    window.googletag.cmd = [];
+
+    // Load script
+    $.ajax({
+      dataType: "script",
+      cache: true,
+      url: "//www.googletagservices.com/tag/js/gpt.js"
+    });
+  }
+
   var tags = $("div.google-dfp:visible");
 
   if(tags.length == 0)
     return; // nothing to do
 
-  // initialize googletag-variable
-  window.googletag = window.googletag || {};
-  var googletag = window.googletag;
-  googletag.cmd = [];
+  if (typeof window.googletag === "undefined") {
+    loadGooglePublisherTag();
+  }
 
-  // Load script
-  $.ajax({
-    dataType: "script",
-    cache: true,
-    url: "//www.googletagservices.com/tag/js/gpt.js"
-  });
+  var googletag = window.googletag;
 
   // async commands
   googletag.cmd.push(function() {
