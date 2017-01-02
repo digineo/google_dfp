@@ -45,6 +45,10 @@ You can optionally specify a targeting hash:
 
 	<%= dfp_tag :leaderboard, { :country => 'US', :customer_job => 'teacher' } %>
 
+You are also able to supply a fallback name, which will be used if `name` cannot be found:
+
+	<%= dfp_tag :specific-leaderboard, {}, { :fallback => :house-leaderboard } %>
+
 Copyright
 ---------
 
