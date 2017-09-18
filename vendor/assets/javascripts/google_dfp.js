@@ -62,6 +62,11 @@ $(function(){
       }
     })
 
+    /*
+      This will collapse all divs on the page before the browser fetches any ads. When the ad request happens for the slot, if the particular slot is filled, the div will expand, possibly pushing down the page content and reflowing the page.
+    */
+    googletag.pubads().collapseEmptyDivs(true, true);
+
     // enable services
     googletag.pubads().enableSingleRequest();
     googletag.pubads().enableAsyncRendering();
